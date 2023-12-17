@@ -1,0 +1,29 @@
+﻿https://www.youtube.com/watch?v=NNiupSwiVfg
+.NET 7 💥 - ASP.NET Core Web Api CRUD, Repository Pattern, SQLite & Automapper
+
+md FormulaOne
+cd FormulaOne
+dotnet new sln --name FormulaOne
+
+dotnet new webapi -controllers -n FormulaOne.Api
+dotnet sln FormulaOne.sln add FormulaOne.Api/FormulaOne.Api.csproj
+
+dotnet new classlib -n FormulaOne.Entities
+dotnet sln FormulaOne.sln add FormulaOne.Entities/FormulaOne.Entities.csproj
+
+dotnet new classlib -n FormulaOne.DataService
+dotnet sln FormulaOne.sln add FormulaOne.DataService/FormulaOne.DataService.csproj
+
+cd FormulaOne.DataService
+dotnet add package Microsoft.EntityFrameworkCore
+dotnet add package Microsoft.EntityFrameworkCore.Design
+dotnet add package Microsoft.EntityFrameworkCore.Tools
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+cd FormulaOne.Api
+dotnet add package AutoMapper
+dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection
+
+
+C:\WFC\FormulaOne\FormulaOne.DataService>dotnet ef migrations add "initial-migration" --startup-project ../FormulaOne.Api
+C:\WFC\FormulaOne\FormulaOne.DataService>dotnet ef database update --startup-project ../FormulaOne.Api
+
